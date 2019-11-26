@@ -196,7 +196,10 @@ extension MWBaseCameraViewController {
         }
 
         guard videoDevice.activeVideoMinFrameDuration.timescale != frameRate,
-            videoDevice.activeVideoMaxFrameDuration.timescale != frameRate else { return }
+            videoDevice.activeVideoMaxFrameDuration.timescale != frameRate else {
+                self.frameRate = frameRate
+                return
+        }
 
         do {
             try videoDevice.lockForConfiguration()
